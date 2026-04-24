@@ -1,0 +1,44 @@
+# ==============================================
+# HAIRBRIGHT MMM — requirements.txt (raíz)
+# Entorno de desarrollo completo: notebooks + API
+# Python 3.11+
+# Para el entorno Docker de la API usar api/requirements.txt
+# Last updated: April 2026 — v1.1
+# ==============================================
+
+# 🔬 Bayesian modeling
+pymc>=5.0,<6.0
+pytensor>=2.18
+
+# 📊 Posterior analysis & diagnostics
+arviz==0.22.0
+
+# 🔢 Numerical operations
+numpy==2.0.2
+scipy==1.16.3
+
+# 🐼 Data manipulation
+pandas==2.2.2
+openpyxl>=3.1
+xlrd>=2.0
+
+# 🤖 Machine learning
+scikit-learn>=1.4
+
+# 📈 Visualization
+matplotlib>=3.8
+seaborn>=0.13
+
+# 🌐 API & server (versiones fijadas, en sync con api/requirements.txt)
+fastapi==0.135.3
+uvicorn[standard]==0.44.0
+pydantic==2.12.3
+httpx>=0.27
+
+# 📄 Document generation
+reportlab>=4.0
+python-pptx>=0.6.23
+
+# 🔧 Utilities
+python-dotenv>=1.0
+tqdm>=4.66

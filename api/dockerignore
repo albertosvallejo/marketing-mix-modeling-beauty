@@ -1,0 +1,45 @@
+# ── api/.dockerignore ────────────────────────────────────────────────────────
+# Excluye del build context todo lo que no necesita la imagen Docker.
+# Reduce el tamaño del contexto y acelera el build.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Archivo uvicorn vacío (eliminable del repo)
+uvicorn
+
+# Trazas NetCDF de PyMC (pesadas, sólo para notebooks)
+*.nc
+
+# Datos de desarrollo — no necesarios en la imagen
+*.xlsx
+*.csv
+*.pdf
+*.pptx
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentación y notebooks (no van en la imagen de producción)
+*.md
+*.ipynb
+notebooks/
+_private/
+assets/
+dashboard/
+data/

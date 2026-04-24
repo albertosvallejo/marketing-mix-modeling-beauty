@@ -1,0 +1,67 @@
+# ==============================================
+# HAIRBRIGHT MMM — .gitignore
+# ==============================================
+
+# 🔐 Secrets & environment
+.env
+*.env.backup
+!.env.example
+
+# 🔒 Private notes & confidential documents
+_private/
+
+# 📊 Datos de cliente — nunca al repo
+data/raw/
+
+# 📊 Datos intermedios y procesados — generados por los notebooks
+data/interim/
+data/processed/
+
+# 🧠 MCMC traces — archivos NetCDF de 50–500 MB
+data/models/*.nc
+
+# 📈 Outputs — artefactos generados en cada ejecución
+data/outputs/
+
+# 📄 Reports — generados por NB09; la fuente son los notebooks
+data/reports/
+# Excepción: mantener deliverables de ejemplo como evidencia de portfolio
+!data/reports/hairbright_mmm_executive_summary_20260420.pdf
+!data/reports/fig_0*.png
+
+# 🗃️ API bundle — generado por NB10; se reconstruye desde el trace
+api/mmm_bundle_*/
+
+# 🧪 Jupyter temporaries
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# 🐍 Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 📦 Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# 🖥️ Editor & OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# 📝 Logs & temporaries
+*.log
+*.tmp
+*.temp
+
+# 🐳 Docker runtime artefacts
+.docker/
+docker-compose.override.yml

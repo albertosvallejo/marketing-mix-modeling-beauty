@@ -1,0 +1,57 @@
+# ── docker-compose.yml — HairBright MMM ──────────────────────────────────────
+# Levanta la API + el dashboard estático con un único comando.
+#
+# Uso rápido:
+#   docker compose up --build          → build + arranque
+#   docker compose up -d               → modo daemon (background)
+#   docker compose down                → parar y eliminar contenedores
+#   docker compose logs -f api         → seguir logs de la API
+#
+# La API queda en:        http://localhost:8000
+# Swagger UI:             http://localhost:8000/docs
+# Health check:           http://localhost:8000/health
+# Dashboard funcional:    abrir dashboard/html_pilot_functional.html en el navegador
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+
+  # ── FastAPI backend ─────────────────────────────────────────────────────────
+  api:
+    build:
+      context: ./api          # El Dockerfile vive en api/
+      dockerfile: Dockerfile
+    container_name: hairbright-mmm-api
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: "8000"
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+    # Monta el bundle como volumen read-only: permite actualizar el modelo
+    # sin reconstruir la imagen (Monthly Refresh Procedure, NB10 §10.7).
+    volumes:
+      - ./api/mmm_bundle_20260420:/app/mmm_bundle_20260420:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  # ── Nginx: sirve el dashboard estático + hace proxy a la API ──────────────
+  # Opcional — comentar este bloque si sólo se necesita la API.
+  # Permite abrir el dashboard funcional en http://localhost:3000
+  # sin problemas de CORS ni MIME type (a diferencia de abrir el .html directo).
+  dashboard:
+    image: nginx:alpine
+    container_name: hairbright-mmm-dashboard
+    ports:
+      - "3000:80"
+    volumes:
+      - ./dashboard:/usr/share/nginx/html:ro
+      - ./api/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped

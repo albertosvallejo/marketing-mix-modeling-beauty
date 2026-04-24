@@ -1,0 +1,14 @@
+# ==============================================
+# HAIRBRIGHT MMM — api/requirements.txt
+# Solo dependencias de la API (imagen Docker)
+# Sin pymc, pandas ni openpyxl — model_backend.py no los necesita
+# Python 3.11+  ·  Abril 2026
+# ==============================================
+
+fastapi==0.135.3
+uvicorn[standard]==0.44.0
+pydantic==2.12.3
+numpy==2.0.2
+scipy==1.16.3
+arviz==0.22.0
+httpx>=0.27
