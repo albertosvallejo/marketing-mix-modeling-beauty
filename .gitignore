@@ -25,6 +25,9 @@ data/outputs/
 
 # 📄 Reports — generados por NB09; la fuente son los notebooks
 data/reports/
+!data/reports/hairbright_mmm_executive_summary_20260420.pdf
+!data/reports/hairbright_mmm_report_20260420.xlsx
+!data/reports/hairbright_mmm_business_deck_20260607.pdf
 
 # 🗃️ API bundle — generado por NB10; se reconstruye desde el trace
 api/mmm_bundle_*/

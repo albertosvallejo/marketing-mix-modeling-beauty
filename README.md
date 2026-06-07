@@ -51,6 +51,8 @@ The goal was to go beyond a typical academic implementation and build a complete
 
 > **Current status:** NB01–NB10 completed with definitive outputs. The React pilot dashboard is live — both a functional interactive version (`dashboard/html_pilot_functional.html`) and a static preview version (`dashboard/html_pilot_static.html`) are available in the `dashboard/` directory. The full stack is Dockerized and ready to run with `docker compose up`.
 
+> **Business-facing overview:** `data/reports/hairbright_mmm_business_deck_20260607.pdf` — portfolio business deck covering project context, end-to-end pipeline, attribution results, calibrated iROAS, budget scenarios and roadmap. Start here for a non-technical audience before reading the analytical notebooks.
+
 ### Running the notebooks (Google Colab — recommended)
 
 ```bash
@@ -740,9 +742,9 @@ No more than two NB03 → NB04 iterations without a deeper data review.
 
 **Outputs (in `data/reports/`):**
 - `hairbright_mmm_executive_summary_YYYYMMDD.pdf` — 6-page PDF (187 KB)
-- `hairbright_mmm_presentation_YYYYMMDD.pptx` — 6-slide presentation (612 KB)
-- `hairbright_mmm_report_YYYYMMDD.xlsx` — 5-sheet Excel workbook
+- `hairbright_mmm_executive_summary_YYYYMMDD.pdf` — executive summary PDF
 - `fig_01_kpi_scorecard_YYYYMMDD.png` through `fig_04_scenarios_YYYYMMDD.png`
+- `hairbright_mmm_business_deck_20260607.pdf` — portfolio business deck (committed; see `.gitignore` exception)
 
 **Visual identity:**
 
@@ -979,12 +981,12 @@ hairbright-mmm/
 │   │
 │   └── reports/                                  # NB09 output: executive deliverables
 │       ├── hairbright_mmm_executive_summary_20260420.pdf  ← ✅ in repo (portfolio sample)
+│       ├── hairbright_mmm_report_20260420.xlsx            ← ✅ in repo (portfolio sample)
 │       ├── fig_01_kpi_scorecard_20260420.png              ← ✅ in repo (portfolio sample)
 │       ├── fig_02_attribution_20260420.png                ← ✅ in repo (portfolio sample)
 │       ├── fig_03_revenue_decomp_20260420.png             ← ✅ in repo (portfolio sample)
 │       ├── fig_04_scenarios_20260420.png                  ← ✅ in repo (portfolio sample)
-│       ├── hairbright_mmm_presentation_20260420.pptx      ← gitignored (regenerate with NB09)
-│       └── hairbright_mmm_report_20260420.xlsx            ← gitignored (regenerate with NB09)
+│       └── hairbright_mmm_business_deck_20260607.pdf      ← ✅ in repo (portfolio business deck)
 │
 ├── api/                                          # NB10 output: production API
 │   ├── main.py                                   # FastAPI app (6 endpoints)
